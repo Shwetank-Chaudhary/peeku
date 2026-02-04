@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>For My Love ❤️</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="center">
+        <h1>Aur Gavar ❤️</h1>
+        <p><b>This is something I made just for you.</b></p>
+        <br>
+        <a href="/memories" class="btn">Start the Journey 💌</a>
+    </div>
+
+    <!-- JavaScript: runs AFTER the page loads -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const heartCount = 30;
+
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement("div");
+                heart.className = "heart";
+                heart.innerHTML = "❤️";
+
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = (6 + Math.random() * 6) + "s";
+                heart.style.fontSize = (16 + Math.random() * 24) + "px";
+
+                document.body.appendChild(heart);
+            }
+        });
+    </script>
+
+</body>
+</html>

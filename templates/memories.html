@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Our Memories</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="center"><h1>Our Story ✨</h1>
+    
+        <div class="card">💖 You Know what's the best things I have ate ever in my entire life: 
+            The ICECREAM YOU FED ME WITH HANDS</div>
+        <div class="card">🌍 Best Trip: When you were with me on my bike... Traveling with you was ALL I EVER NEEDED AND DIDN'T KNOW</div>
+        <div class="card">😂 All the silly laughs we share and ofcourse the ladais 💖 </div>
+   
+        <br>
+        <a href="/gallery" class="btn">See Our Photos 📸</a>
+    </div>
+</body>
+<script>
+    const heartCount = 30;
+
+    for (let i = 0; i < heartCount; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (6 + Math.random() * 6) + "s";
+        heart.style.fontSize = (16 + Math.random() * 24) + "px";
+        document.body.appendChild(heart);
+    }
+</script>
+</html>

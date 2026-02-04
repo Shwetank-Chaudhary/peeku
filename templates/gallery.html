@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gallery</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="center">
+        <h1>Moments I Treasure ❤️</h1>
+    </div>
+
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="{{ url_for('static', filename='images/Snapchat-1306568318.jpg') }}" alt="Memory 1">
+            <p>Of course baby, you are ❤️</p>
+        </div>
+
+        <div class="gallery-item">
+            <img src="{{ url_for('static', filename='images/Snapchat-1423146934.jpg') }}" alt="Memory 2">
+            <p>Remeber this day, I loved it when you clicked this pic ❤️</p>
+        </div>
+    
+    <br>
+    
+        <a href="/valentine" class="btn">One Last Thing 💘</a>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Valentine?</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script>
+        // Array of cute phrases
+        const cutePhrases = [
+            "Bawari 🌞",
+            "Gaadhi 💓",
+            "Pagla gaayi hai kya 💖",
+            "aisa karegi ab 🍬",
+            "Mera raja beta please ❤️",
+            "Please say yes 😍"
+        ];
+
+        // Function to move button and show random phrase
+        function moveButton() {
+            const btn = document.getElementById("noBtn");
+
+            // Move button to random position
+            btn.style.position = "absolute";
+            btn.style.left = Math.random() * 70 + "%"; // stay within viewport
+            btn.style.top = Math.random() * 70 + "%";
+
+            // Pick random phrase and set as button text
+            const phrase = cutePhrases[Math.floor(Math.random() * cutePhrases.length)];
+            btn.innerText = phrase;
+
+            // Optional: floating hearts
+            const heartCount = 10;
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement("div");
+                heart.className = "heart";
+                heart.innerHTML = "❤️";
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+                heart.style.fontSize = (14 + Math.random() * 20) + "px";
+                document.body.appendChild(heart);
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div class="center">
+        <h1>Will You Be My Valentine? 💖</h1>
+        <a href = "/finally" class="btn">YES 💕</a>
+        <button id="noBtn" class="btn" onmouseover="moveButton()">NO 😢</button>
+    </div>
+
+</body>
+</html>

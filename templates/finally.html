@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yay! 💕</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            background: #ffe0e9; /* soft pink */
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden; /* prevents scrollbars from confetti */
+        }
+
+        h1 {
+            font-size: 4rem;
+            color: #d32f6e; /* dark pink */
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.5rem;
+            color: #2b2b2b;
+        }
+
+        .hearts, .confetti {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            animation: floatUp 5s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            opacity: 0.9;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>HAHHHHAAAAA 💕</h1>
+        <p>You're Stuck with me forever ❤️</p>
+    </div>
+
+    <!-- Floating hearts -->
+    <div class="hearts"></div>
+
+    <!-- Confetti container -->
+    <div class="confetti"></div>
+
+    <script>
+        // ===== Floating Hearts =====
+        const heartContainer = document.querySelector(".hearts");
+        const heartCount = 30;
+
+        for (let i = 0; i < heartCount; i++) {
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = (16 + Math.random() * 24) + "px";
+            heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+            heartContainer.appendChild(heart);
+        }
+
+        // ===== Confetti Explosion =====
+        const confettiContainer = document.querySelector(".confetti");
+        const colors = ["#ff4d6e", "#ff9a9e", "#ffd6e0", "#ffe0e9", "#ff77a9"];
+
+        function createConfetti() {
+            const confettiCount = 150;
+
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement("div");
+                confetti.className = "confetti-piece";
+
+                // Random size & color
+                const size = Math.random() * 10 + 5;
+                confetti.style.width = size + "px";
+                confetti.style.height = size + "px";
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+                // Random position
+                confetti.style.left = Math.random() * window.innerWidth + "px";
+                confetti.style.top = Math.random() * window.innerHeight - 50 + "px";
+
+                // Animation
+                const rotate = Math.random() * 360;
+                const duration = 2 + Math.random() * 3;
+                confetti.style.transform = `rotate(${rotate}deg)`;
+                confetti.style.transition = `transform ${duration}s linear, top ${duration}s linear`;
+
+                confettiContainer.appendChild(confetti);
+
+                // Move confetti down
+                setTimeout(() => {
+                    confetti.style.top = window.innerHeight + "px";
+                    confetti.style.transform = `rotate(${rotate + 360}deg)`;
+                }, 50);
+
+                // Remove confetti after animation
+                setTimeout(() => {
+                    confetti.remove();
+                }, duration * 1000 + 500);
+            }
+        }
+
+        // Trigger confetti on page load
+        window.onload = createConfetti;
+    </script>
+</body>
+</html>
